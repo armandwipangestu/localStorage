@@ -11,17 +11,25 @@
       crossorigin="anonymous"
     />
     <link href="../assets/icon/fontawesome/css/all.css" rel="stylesheet" />
+    <style>
+      input {
+        width: 100%;
+        padding: 12px 40px;
+        margin: 8px 0;
+        display: inline-block;
+      }
+    </style>
   </head>
 
   <body>
     <div class="mt-5 d-flex justify-content-center">
       <div class="mt-5">
-        <div class="text-center fs-1 pt-5">
+        <div class="text-center fs-1">
           <i class="fa-solid fa-boxes-stacked"></i>
           <h4 class="pt-3 mb-4">Sign up to localStorage</h4>
         </div>
 
-        <form>
+        <form class="border rounded p-4">
           <div class="mb-3">
             <label for="" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" />
@@ -31,7 +39,6 @@
             <input type="password" class="form-control" id="password" />
           </div>
           <div class="mb-3">
-            <!-- <p class="w-100 btn btn-success" id="btn-sign-up">Sign up</p> -->
             <button
               class="w-100 btn btn-success"
               type="button"
@@ -41,6 +48,15 @@
             </button>
           </div>
         </form>
+
+        <div class="border rounded mt-3 p-2">
+          <p class="f-5 p-1 m-1">
+            Already have an account?
+            <a href="../sign_in/index.html" style="text-decoration: none"
+              >Sign in</a
+            >
+          </p>
+        </div>
       </div>
     </div>
 

@@ -11,27 +11,47 @@
       crossorigin="anonymous"
     />
     <link href="../assets/icon/fontawesome/css/all.css" rel="stylesheet" />
+    <style>
+      input {
+        width: 100%;
+        padding: 12px 40px;
+        margin: 8px 0;
+        display: inline-block;
+      }
+
+      .password-field {
+        position: relative;
+      }
+
+      .password-field i {
+        position: absolute;
+      }
+    </style>
   </head>
 
   <body>
     <div class="mt-5 d-flex justify-content-center">
       <div class="mt-5">
-        <div class="text-center fs-1 pt-5">
+        <div class="text-center fs-1">
           <i class="fa-solid fa-boxes-stacked"></i>
           <h4 class="pt-3 mb-4">Sign in to localStorage</h4>
         </div>
 
-        <form>
+        <form class="border rounded p-4">
           <div class="mb-3">
             <label for="" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" />
           </div>
-          <div class="mb-3">
+          <div class="mb-3 password-field">
             <label for="" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" />
+            <i
+              class="fa-solid fa-eye-slash"
+              id="togglePassword"
+              style="cursor: pointer"
+            ></i>
           </div>
           <div class="mb-3">
-            <!-- <p class="w-100 btn btn-success" id="btn-sign-up">Sign up</p> -->
             <button
               class="w-100 btn btn-success"
               type="button"
@@ -41,6 +61,15 @@
             </button>
           </div>
         </form>
+
+        <div class="border rounded mt-3 p-2">
+          <p class="f-5 p-1 m-1">
+            New to localStorage?
+            <a href="../sign_up/index.html" style="text-decoration: none"
+              >Create an account.</a
+            >
+          </p>
+        </div>
       </div>
     </div>
 
@@ -62,5 +91,17 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/icon/fontawesome/js/all.js"></script>
     <script src="../assets/js/index.js"></script>
+    <script>
+      const togglePassword = document.getElementById("togglePassword");
+      console.log(togglePassword);
+      const formPassword = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", function () {
+        // const type =
+        //   formPassword.getAttribute("type") === "password" ? "text" : "password";
+        // formPassword.setAttribute("type", type);
+        alert("ok");
+      });
+    </script>
   </body>
 </html>

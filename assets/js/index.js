@@ -10,30 +10,42 @@ const getFormInput = () => {
 
 const getUser = (key) => {
   const user = localStorage.getItem(key);
-  return user;
+  return dataToObject(user);
 };
 
 const dataToString = (data) => {
   return JSON.stringify(data);
 };
 
+const dataToObject = (data) => {
+  return JSON.parse(data);
+};
+
 const addUser = (new_user) => {
   const new_user_parse = dataToString(new_user);
   if (!getUser(new_user.username)) {
     localStorage.setItem(new_user.username, new_user_parse);
-    sendNotify("success");
-    document.location.href = "../../sign_in/index.html";
+    sendNotify("success", "Sign up successfully");
+    setTimeout(() => {
+      document.location.href = "../../sign_in/index.html";
+    }, 3000);
   } else {
-    sendNotify("failed");
+    sendNotify("info", "Username already taken");
   }
 };
 
 const login = (user) => {
-  console.log(`${getUser(user.username)} \n ${user}`);
-  if (JSON.parse(getUser(user.username)) == user) {
-    sendNotify("success");
+  //console.log(`${getUser(user.username).username} \n ${user}`);
+  const { username, password } = getUser(user.username);
+
+  if (username === user.username) {
+    if (password === user.password) {
+      sendNotify("success", "Sign in successfully");
+    } else {
+      sendNotify("warning", "Wrong username or password");
+    }
   } else {
-    sendNotify("failed");
+    sendNotify("warning", "Wrong username or password");
   }
 };
 
@@ -57,16 +69,9 @@ const Toast = Swal.mixin({
   },
 });
 
-const sendNotify = (status) => {
-  if (status == "failed") {
-    Toast.fire({
-      icon: "error",
-      title: `Username already taken`,
-    });
-  } else {
-    Toast.fire({
-      icon: "success",
-      title: `Sign up successfully`,
-    });
-  }
+const sendNotify = (icon, title) => {
+  Toast.fire({
+    icon,
+    title,
+  });
 };
