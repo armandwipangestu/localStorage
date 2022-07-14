@@ -19,12 +19,12 @@
         display: inline-block;
       }
 
-      .password-field {
-        position: relative;
-      }
-
-      .password-field i {
+      .span {
         position: absolute;
+        transform: translate(100%, 100%);
+        top: 55%;
+        right: 43%;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -45,11 +45,9 @@
           <div class="mb-3 password-field">
             <label for="" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" />
-            <i
-              class="fa-solid fa-eye-slash"
-              id="togglePassword"
-              style="cursor: pointer"
-            ></i>
+            <span id="togglePassword"
+              ><i class="fa-solid fa-eye" id="iconTogglePassword"></i
+            ></span>
           </div>
           <div class="mb-3">
             <button
@@ -91,17 +89,40 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/icon/fontawesome/js/all.js"></script>
     <script src="../assets/js/index.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
     <script>
-      const togglePassword = document.getElementById("togglePassword");
-      console.log(togglePassword);
+      const togglePassword = document.querySelector("#togglePassword");
       const formPassword = document.querySelector("#password");
 
       togglePassword.addEventListener("click", function () {
-        // const type =
-        //   formPassword.getAttribute("type") === "password" ? "text" : "password";
-        // formPassword.setAttribute("type", type);
-        alert("ok");
+        const type =
+          formPassword.getAttribute("type") === "password"
+            ? "text"
+            : "password";
+        formPassword.setAttribute("type", type);
       });
+
+      let icon = togglePassword
+        .querySelector("#iconTogglePassword")
+        .getAttribute("class");
+
+      if (icon == "fa-solid fa-eye") {
+        $("span").click(() => {
+          $("#iconTogglePassword").toggleClass("fa-solid fa-eye-slash");
+        });
+        icon = "fa-solid fa-eye-slash";
+      }
+
+      if (icon == "fa-solid fa-eye-slash") {
+        $("span").click(() => {
+          $("#iconTogglePassword").toggleClass("fa-solid fa-eye");
+          icon = "fa-solid fa-eye";
+        });
+      }
     </script>
   </body>
 </html>
