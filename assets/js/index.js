@@ -35,26 +35,10 @@ const addUser = (new_user) => {
 };
 
 const login = (user) => {
-  //console.log(`${getUser(user.username).username} \n ${user}`);
-  const { username, password } = getUser(user.username);
-
-  // if (username === user.username) {
-  //   if (password === user.password) {
-  //     sendNotify("success", "Sign in successfully");
-  //   } else {
-  //     sendNotify("warning", "Wrong username or password");
-  //   }
-  // } else {
-  //   sendNotify("warning", "Wrong username or password");
-  // }
-
-  if (
-    username === user.username ||
-    (username == null && password === user.password)
-  ) {
-    sendNotify("success", "Sign in successfully");
+  if (getUser(user.username) !== null && getUser(user.username).password === user.password) {
+    sendNotify("success", "Sign in successfully")
   } else {
-    sendNotify("warning", "Wrong username or password");
+    sendNotify("warning", "Wrong username or password")
   }
 };
 
