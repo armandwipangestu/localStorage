@@ -2,8 +2,8 @@ const getFormInput = () => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const obj = {
-    username: username,
-    password: password,
+    username,
+    password,
   };
   return obj;
 };
@@ -38,12 +38,21 @@ const login = (user) => {
   //console.log(`${getUser(user.username).username} \n ${user}`);
   const { username, password } = getUser(user.username);
 
-  if (username === user.username) {
-    if (password === user.password) {
-      sendNotify("success", "Sign in successfully");
-    } else {
-      sendNotify("warning", "Wrong username or password");
-    }
+  // if (username === user.username) {
+  //   if (password === user.password) {
+  //     sendNotify("success", "Sign in successfully");
+  //   } else {
+  //     sendNotify("warning", "Wrong username or password");
+  //   }
+  // } else {
+  //   sendNotify("warning", "Wrong username or password");
+  // }
+
+  if (
+    username === user.username ||
+    (username == null && password === user.password)
+  ) {
+    sendNotify("success", "Sign in successfully");
   } else {
     sendNotify("warning", "Wrong username or password");
   }
