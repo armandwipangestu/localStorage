@@ -26,6 +26,20 @@
         right: 43%;
         cursor: pointer;
       }
+
+      .input-icon {
+        position: absolute;
+        right: 10px;
+        top: calc(
+          75% - 0.5em
+        ); /* Keep icon in center of input, regardless of the input height */
+      }
+      input {
+        padding-left: 17px;
+      }
+      .input-wrapper {
+        position: relative;
+      }
     </style>
   </head>
 
@@ -42,11 +56,15 @@
             <label for="" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" />
           </div>
-          <div class="mb-3 password-field">
+          <div class="mb-3 password-field input-wrapper">
             <label for="" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" />
-            <span id="togglePassword"
-              ><i class="fa-solid fa-eye" id="iconTogglePassword"></i
+            <span id="togglePassword" class="text-muted"
+              ><i
+                class="fa-solid fa-eye input-icon"
+                id="iconTogglePassword"
+                style="cursor: pointer"
+              ></i
             ></span>
           </div>
           <div class="mb-3">
@@ -110,18 +128,19 @@
         .querySelector("#iconTogglePassword")
         .getAttribute("class");
 
-      if (icon == "fa-solid fa-eye") {
+      const changeIcon = (iconChange) => {
         $("span").click(() => {
-          $("#iconTogglePassword").toggleClass("fa-solid fa-eye-slash");
+          $("#iconTogglePassword").toggleClass(`fa-solid ${iconChange}`);
         });
-        icon = "fa-solid fa-eye-slash";
+        icon = `fa-solid ${iconChange} input-icon`;
+      };
+
+      if (icon == "fa-solid fa-eye input-icon") {
+        changeIcon("fa-eye-slash");
       }
 
-      if (icon == "fa-solid fa-eye-slash") {
-        $("span").click(() => {
-          $("#iconTogglePassword").toggleClass("fa-solid fa-eye");
-          icon = "fa-solid fa-eye";
-        });
+      if (icon == "fa-solid fa-eye-slash input-icon") {
+        changeIcon("fa-eye");
       }
     </script>
   </body>
