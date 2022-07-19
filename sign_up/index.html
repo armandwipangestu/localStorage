@@ -11,18 +11,11 @@
       crossorigin="anonymous"
     />
     <link href="../assets/icon/fontawesome/css/all.css" rel="stylesheet" />
-    <style>
-      input {
-        width: 100%;
-        padding: 12px 40px;
-        margin: 8px 0;
-        display: inline-block;
-      }
-    </style>
+    <link rel="stylesheet" href="../assets/css/index.css">
   </head>
 
   <body>
-    <div class="mt-5 d-flex justify-content-center">
+    <div class="mt-3 d-flex justify-content-center">
       <div class="mt-5">
         <div class="text-center fs-1">
           <i class="fa-solid fa-boxes-stacked"></i>
@@ -32,15 +25,22 @@
         <form class="border rounded p-4">
           <div class="mb-3">
             <label for="" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" />
+            <input type="text" class="form-control" id="username" required autofocus />
           </div>
-          <div class="mb-3">
+          <div class="mb-3 password-field input-wrapper">
             <label for="" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" />
+            <span id="togglePassword" class="text-muted"
+              ><i
+                class="fa-solid fa-eye input-icon"
+                id="iconTogglePassword"
+                style="cursor: pointer"
+              ></i
+            ></span>
           </div>
           <div class="mb-3">
             <button
-              class="w-100 btn btn-success"
+              class="w-100 btn btn-primary mt-2"
               type="button"
               onclick="btnSignUp()"
             >
@@ -49,7 +49,7 @@
           </div>
         </form>
 
-        <div class="border rounded mt-3 p-2">
+        <div class="border rounded mt-3 p-2 ps-5 pe-5 mb-5">
           <p class="f-5 p-1 m-1">
             Already have an account?
             <a href="../sign_in/index.html" style="text-decoration: none"
@@ -78,5 +78,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/icon/fontawesome/js/all.js"></script>
     <script src="../assets/js/index.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+    ></script>
+    <script src="../assets/js/togglePassword.js"></script>
   </body>
 </html>

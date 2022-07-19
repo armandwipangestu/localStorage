@@ -37,6 +37,9 @@ const addUser = (new_user) => {
 const login = (user) => {
   if (getUser(user.username) !== null && getUser(user.username).password === user.password) {
     sendNotify("success", "Sign in successfully")
+    setTimeout(() => {
+      document.location.href = "../../admin/dashboard.html";
+    }, 3000);
   } else {
     sendNotify("warning", "Wrong username or password")
   }
